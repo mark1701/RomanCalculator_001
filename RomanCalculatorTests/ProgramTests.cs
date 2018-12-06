@@ -7,12 +7,10 @@ namespace RomanCalculator.Tests
         [Test]
         public void Adding_two_empty_numbers_returns_an_empty_sum()
         {
-            var firstNumber = "";
-            var secondNumber = "";
+            var emptyNumber = "";
+            var result = Addition.Sum(emptyNumber, emptyNumber);
 
-            var actualSum = firstNumber + secondNumber;
-
-            Assert.AreEqual("", actualSum);
+            Assert.AreEqual(emptyNumber, result);
         }
 
         [Test]
@@ -20,9 +18,9 @@ namespace RomanCalculator.Tests
             var nonEmptyNumber = "I";
             var emptyNumber = "";
 
-            var actualSum = nonEmptyNumber + emptyNumber;
+            var result = Addition.Sum(nonEmptyNumber,emptyNumber);
 
-            Assert.AreEqual(nonEmptyNumber, actualSum);
+            Assert.AreEqual(nonEmptyNumber, result);
         }
 
         [Test]
@@ -31,9 +29,9 @@ namespace RomanCalculator.Tests
             var emptyNumber = "";
             var nonEmptyNumber = "I";
 
-            var actualSum = emptyNumber + nonEmptyNumber;
+            var result = Addition.Sum(emptyNumber, nonEmptyNumber);
 
-            Assert.AreEqual(nonEmptyNumber, actualSum);
+            Assert.AreEqual(nonEmptyNumber, result);
         }
 
     }

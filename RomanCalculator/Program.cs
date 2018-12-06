@@ -1,6 +1,6 @@
 ﻿namespace RomanCalculator
 {
-    class Program
+    class Calculator
     {
         static void Main(string[] args)
         {
