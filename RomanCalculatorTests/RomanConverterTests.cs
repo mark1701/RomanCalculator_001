@@ -1,101 +1,55 @@
 ﻿using NUnit.Framework;
+using System.Collections;
 
 namespace RomanCalculator.Tests
 {
+    [TestFixture]
     internal class PositiviseNumberTests
     {
-        [Test]
-        public void Positivise_IV()
+        [Test, TestCaseSource(typeof(PositivisedData), nameof(PositivisedData.TestCases))]
+        public string PositiviseNumber(string numberToConvert)
         {
-            var numberToConvert = "IV";
-            var expectedConversion = "IIII";
-
-            var result = RomanConverter.PositiviseNumber(numberToConvert);
-
-            Assert.AreEqual(expectedConversion, result);
+            return RomanConverter.PositiviseNumber(numberToConvert);
         }
 
-        [Test]
-        public void Positivise_IX()
+        private class PositivisedData
         {
-            var numberToConvert = "IX";
-            var expectedConversion = "VIIII";
-
-            var result = RomanConverter.PositiviseNumber(numberToConvert);
-
-            Assert.AreEqual(expectedConversion, result);
+            public static IEnumerable TestCases
+            {
+                get
+                {
+                    yield return new TestCaseData("IV").Returns("IIII");
+                    yield return new TestCaseData("IX").Returns("VIIII");
+                    yield return new TestCaseData("IL").Returns("XXXXVIIII");
+                }
+            }
         }
-
-        [Test]
-        public void Positivise_IL()
-        {
-            var numberToConvert = "IL";
-            var expectedConversion = "XXXXVIIII";
-
-            var result = RomanConverter.PositiviseNumber(numberToConvert);
-
-            Assert.AreEqual(expectedConversion, result);
-        }
-
     }
 
+    [TestFixture]
     internal class NormaliseNumberTests
     {
-
-        [Test]
-        public void Normalise_empty_numeral()
+        [Test, TestCaseSource(typeof(NormalisededData), nameof(NormalisededData.TestCases))]
+        public string NormaliseNumber(string numberToConvert)
         {
-            var numberToConvert = "";
-            var expectedConversion = "";
-
-            var result = RomanConverter.NormaliseNumber(numberToConvert);
-
-            Assert.AreEqual(expectedConversion, result);
+            return RomanConverter.NormaliseNumber(numberToConvert);
         }
 
-        [Test]
-        public void Normalise_IV()
+        private class NormalisededData
         {
-            var numberToConvert = "IV";
-            var expectedConversion = "IV";
-
-            var result = RomanConverter.NormaliseNumber(numberToConvert);
-
-            Assert.AreEqual(expectedConversion, result);
+            public static IEnumerable TestCases
+            {
+                get
+                {
+                    yield return new TestCaseData("").Returns("");
+                    yield return new TestCaseData(" ").Returns(" ");
+                    yield return new TestCaseData("IV").Returns("IV");
+                    yield return new TestCaseData("IIII").Returns("IV");
+                    yield return new TestCaseData("IIII").Returns("IV");
+                    yield return new TestCaseData("VIIII").Returns("IX");
+                    yield return new TestCaseData("XXXXVIIII").Returns("IL");
+                }
+            }
         }
-
-        [Test]
-        public void Normalise_IIII()
-        {
-            var numberToConvert = "IIII";
-            var expectedConversion = "IV";
-
-            var result = RomanConverter.NormaliseNumber(numberToConvert);
-
-            Assert.AreEqual(expectedConversion, result);
-        }
-
-        [Test]
-        public void Normalise_VIIII()
-        {
-            var numberToConvert = "VIIII";
-            var expectedConversion = "IX";
-
-            var result = RomanConverter.NormaliseNumber(numberToConvert);
-
-            Assert.AreEqual(expectedConversion, result);
-        }
-
-        [Test]
-        public void Normalise_XXXXVIIII()
-        {
-            var numberToConvert = "XXXXVIIII";
-            var expectedConversion = "IL";
-
-            var result = RomanConverter.NormaliseNumber(numberToConvert);
-
-            Assert.AreEqual(expectedConversion, result);
-        }
-
     }
 }
