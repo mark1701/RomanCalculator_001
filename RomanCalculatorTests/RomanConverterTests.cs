@@ -41,6 +41,29 @@ namespace RomanCalculator.Tests
 
     internal class NormaliseNumberTests
     {
+
+        [Test]
+        public void Normalise_empty_numeral()
+        {
+            var numberToConvert = "";
+            var expectedConversion = "";
+
+            var result = RomanConverter.NormaliseNumber(numberToConvert);
+
+            Assert.AreEqual(expectedConversion, result);
+        }
+
+        [Test]
+        public void Normalise_IV()
+        {
+            var numberToConvert = "IV";
+            var expectedConversion = "IV";
+
+            var result = RomanConverter.NormaliseNumber(numberToConvert);
+
+            Assert.AreEqual(expectedConversion, result);
+        }
+
         [Test]
         public void Normalise_IIII()
         {
