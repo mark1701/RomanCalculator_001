@@ -19,8 +19,11 @@ namespace RomanCalculator.Tests
                 get
                 {
                     yield return new TestCaseData("IV").Returns("IIII");
-                    yield return new TestCaseData("IX").Returns("VIIII");
+                    yield return new TestCaseData("XL").Returns("XXXX");
+                    yield return new TestCaseData("CM").Returns("DCCCC");
                     yield return new TestCaseData("IL").Returns("XXXXVIIII");
+                    yield return new TestCaseData("IL").Returns("XXXXVIIII");
+                    yield return new TestCaseData("ID").Returns("CCCCLXXXXVIIII");
                 }
             }
         }
