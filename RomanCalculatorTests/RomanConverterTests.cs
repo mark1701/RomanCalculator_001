@@ -2,7 +2,7 @@
 
 namespace RomanCalculator.Tests
 {
-    internal class PositiviseTests
+    internal class PositiviseNumberTests
     {
         [Test]
         public void Positivise_IV()
@@ -33,6 +33,43 @@ namespace RomanCalculator.Tests
             var expectedConversion = "XXXXVIIII";
 
             var result = RomanConverter.PositiviseNumber(numberToConvert);
+
+            Assert.AreEqual(expectedConversion, result);
+        }
+
+    }
+
+    internal class NormaliseNumberTests
+    {
+        [Test]
+        public void Normalise_IIII()
+        {
+            var numberToConvert = "IIII";
+            var expectedConversion = "IV";
+
+            var result = RomanConverter.NormaliseNumber(numberToConvert);
+
+            Assert.AreEqual(expectedConversion, result);
+        }
+
+        [Test]
+        public void Normalise_VIIII()
+        {
+            var numberToConvert = "VIIII";
+            var expectedConversion = "IX";
+
+            var result = RomanConverter.NormaliseNumber(numberToConvert);
+
+            Assert.AreEqual(expectedConversion, result);
+        }
+
+        [Test]
+        public void Normalise_XXXXVIIII()
+        {
+            var numberToConvert = "XXXXVIIII";
+            var expectedConversion = "IL";
+
+            var result = RomanConverter.NormaliseNumber(numberToConvert);
 
             Assert.AreEqual(expectedConversion, result);
         }
