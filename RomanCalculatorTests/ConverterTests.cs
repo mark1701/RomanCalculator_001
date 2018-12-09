@@ -18,6 +18,7 @@ namespace RomanCalculator.Tests
             {
                 get
                 {
+                    yield return new TestCaseData("X").Returns("X");
                     yield return new TestCaseData("IV").Returns("IIII");
                     yield return new TestCaseData("XL").Returns("XXXX");
                     yield return new TestCaseData("CM").Returns("DCCCC");

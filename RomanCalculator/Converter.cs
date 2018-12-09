@@ -5,7 +5,7 @@ namespace RomanCalculator
 {
     public static class Converter
     {
-        private static readonly Dictionary<string, string> PositivisedNumbers = new Dictionary<string, string> {
+        private static readonly Dictionary<string, string> SubtractiveNumbersReplacements = new Dictionary<string, string> {
             {"IV","IIII"},
             {"IX","VIIII"},
             {"XL","XXXX"},
@@ -20,33 +20,22 @@ namespace RomanCalculator
             {"IM","DCCCCLXXXXVIIII"},
         };
 
-        private static readonly Dictionary<string, string> NormalisedNumbers = PositivisedNumbers.ToDictionary(x => x.Value, x => x.Key);
+        private static readonly Dictionary<string, string> PositivisedNumbersNormalisedForms = SubtractiveNumbersReplacements.ToDictionary(x => x.Value, x => x.Key);
 
         public static string PositiviseNumber(string number) {
-            var positivisedNumber = "";
-            int i = 0;
+            var positivisedNumber = number;
 
-            while (i <= number.Length - 2) {
-
-                var potentialNegativeCombination = number.Substring(i, 2);
-
-                if (PositivisedNumbers.ContainsKey(potentialNegativeCombination))
-                {
-                    positivisedNumber += PositivisedNumbers[potentialNegativeCombination];
-                    i = i + 2;
-                    continue;
-                } 
-                positivisedNumber += number.Substring(i, 1);
-                i++;
+            foreach (var subtractiveNumber in SubtractiveNumbersReplacements.Keys) {
+                positivisedNumber = positivisedNumber.Replace(subtractiveNumber, SubtractiveNumbersReplacements[subtractiveNumber]);
             }
 
-            return string.IsNullOrEmpty(positivisedNumber) ? number : positivisedNumber;
+            return positivisedNumber;
         }
 
         public static string NormaliseNumber(string number) {
-            if (NormalisedNumbers.ContainsKey(number))
+            if (PositivisedNumbersNormalisedForms.ContainsKey(number))
             {
-                return NormalisedNumbers[number];
+                return PositivisedNumbersNormalisedForms[number];
             }
             return number;
         }
