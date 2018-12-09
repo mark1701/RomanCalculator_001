@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace RomanCalculator
 {
-    public static class RomanConverter
+    public static class Converter
     {
         private static readonly Dictionary<string, string> PositivisedNumeral = new Dictionary<string, string> {
             {"IV","IIII"},
@@ -36,5 +36,7 @@ namespace RomanCalculator
             }
             return number;
         }
+
+
     }
 }

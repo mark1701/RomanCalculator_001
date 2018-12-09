@@ -9,7 +9,7 @@ namespace RomanCalculator.Tests
         [Test, TestCaseSource(typeof(PositivisedData), nameof(PositivisedData.TestCases))]
         public string PositiviseNumber(string numberToConvert)
         {
-            return RomanConverter.PositiviseNumber(numberToConvert);
+            return Converter.PositiviseNumber(numberToConvert);
         }
 
         private class PositivisedData
@@ -35,7 +35,7 @@ namespace RomanCalculator.Tests
         [Test, TestCaseSource(typeof(NormalisededData), nameof(NormalisededData.TestCases))]
         public string NormaliseNumber(string numberToConvert)
         {
-            return RomanConverter.NormaliseNumber(numberToConvert);
+            return Converter.NormaliseNumber(numberToConvert);
         }
 
         private class NormalisededData

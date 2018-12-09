@@ -55,7 +55,7 @@
   <ItemGroup>
     <Compile Include="ProgramTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RomanConverterTests.cs" />
+    <Compile Include="ConverterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
