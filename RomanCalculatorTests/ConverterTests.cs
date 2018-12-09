@@ -4,15 +4,15 @@ using System.Collections;
 namespace RomanCalculator.Tests
 {
     [TestFixture]
-    internal class PositiviseNumberTests
+    internal class SubtractiveNumbersTests
     {
-        [Test, TestCaseSource(typeof(PositivisedData), nameof(PositivisedData.TestCases))]
+        [Test, TestCaseSource(typeof(SubtractiveTestData), nameof(SubtractiveTestData.TestCases))]
         public string PositiviseNumber(string numberToConvert)
         {
             return Converter.PositiviseNumber(numberToConvert);
         }
 
-        private class PositivisedData
+        private class SubtractiveTestData
         {
             public static IEnumerable TestCases
             {
@@ -24,6 +24,9 @@ namespace RomanCalculator.Tests
                     yield return new TestCaseData("IL").Returns("XXXXVIIII");
                     yield return new TestCaseData("IL").Returns("XXXXVIIII");
                     yield return new TestCaseData("ID").Returns("CCCCLXXXXVIIII");
+                    yield return new TestCaseData("XCIV").Returns("LXXXXIIII");
+                    yield return new TestCaseData("MCLXXIV").Returns("MCLXXIIII");
+                    yield return new TestCaseData("CXXXIX").Returns("CXXXVIIII");
                 }
             }
         }
@@ -55,4 +58,6 @@ namespace RomanCalculator.Tests
             }
         }
     }
+
+
 }
