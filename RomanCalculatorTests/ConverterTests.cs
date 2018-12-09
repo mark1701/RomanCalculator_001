@@ -50,11 +50,15 @@ namespace RomanCalculator.Tests
                 {
                     yield return new TestCaseData("").Returns("");
                     yield return new TestCaseData(" ").Returns(" ");
+                    yield return new TestCaseData("X").Returns("X");
                     yield return new TestCaseData("IV").Returns("IV");
                     yield return new TestCaseData("IIII").Returns("IV");
                     yield return new TestCaseData("IIII").Returns("IV");
                     yield return new TestCaseData("VIIII").Returns("IX");
                     yield return new TestCaseData("XXXXVIIII").Returns("IL");
+                    yield return new TestCaseData("LXXXXIIII").Returns("XCIV");
+                    yield return new TestCaseData("MCLXXIIII").Returns("MCLXXIV");
+                    yield return new TestCaseData("CXXXVIIII").Returns("CXXXIX");
                 }
             }
         }

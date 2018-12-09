@@ -33,11 +33,15 @@ namespace RomanCalculator
         }
 
         public static string NormaliseNumber(string number) {
-            if (PositivisedNumbersNormalisedForms.ContainsKey(number))
+            var normalisededNumber = number;
+            var sortedPositivisedForms = PositivisedNumbersNormalisedForms.Keys.OrderByDescending(key => key.Length);
+
+            foreach (var positivisedNumber in sortedPositivisedForms)
             {
-                return PositivisedNumbersNormalisedForms[number];
+                normalisededNumber = normalisededNumber.Replace(positivisedNumber, PositivisedNumbersNormalisedForms[positivisedNumber]);
             }
-            return number;
+
+            return normalisededNumber;
         }
 
 
