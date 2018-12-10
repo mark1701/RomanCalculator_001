@@ -14,7 +14,19 @@ namespace RomanCalculator.Tests
             var input = "VIIIILXXXXI";
             var expected = "LXXXXVIIIII";
 
-            var output = "b";
+            var sortedByWeightNumerals = new char[] { 'M', 'D', 'C', 'L', 'X', 'V', 'I' };
+            var result = "";
+
+            foreach (var numeral in sortedByWeightNumerals)
+            {
+                foreach (char element in input) {
+                    if (element == numeral) {
+                        result += numeral;
+                    }
+                }
+            }
+
+            var output = result;
             Assert.AreEqual(expected, output);
         }
     }
