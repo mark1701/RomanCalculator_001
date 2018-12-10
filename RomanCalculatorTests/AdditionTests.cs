@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System.Collections;
 
 namespace RomanCalculator.Tests
 {
@@ -14,11 +15,12 @@ namespace RomanCalculator.Tests
         }
 
         [Test]
-        public void Adding_an_empty_number_to_a_non_empty_number_returns_the_non_empty_number() {
+        public void Adding_an_empty_number_to_a_non_empty_number_returns_the_non_empty_number()
+        {
             var nonEmptyNumber = "I";
             var emptyNumber = "";
 
-            var result = Addition.Sum(nonEmptyNumber,emptyNumber);
+            var result = Addition.Sum(nonEmptyNumber, emptyNumber);
 
             Assert.AreEqual(nonEmptyNumber, result);
         }
@@ -34,16 +36,28 @@ namespace RomanCalculator.Tests
             Assert.AreEqual(nonEmptyNumber, result);
         }
 
-        [Test]
-        public void Adding_two_random_numbers()
+        [Test, TestCaseSource(typeof(AdditionTestData), nameof(AdditionTestData.AdditionTestCases))]
+        public string Adding_two_random_numbers(string firstNumber, string secondNumber)
         {
-            var firstNumber = "IIII";
-            var secondNumber = "XII";
-            var expectedResult = "XVI";
+            return Addition.Sum(firstNumber, secondNumber);
+        }
 
-            var result = Addition.Sum(firstNumber, secondNumber);
-
-            Assert.AreEqual(expectedResult, result);
+        private class AdditionTestData
+        {
+            public static IEnumerable AdditionTestCases
+            {
+                get
+                {
+                    yield return new TestCaseData("I", "I").Returns("II");
+                    yield return new TestCaseData("IV", "V").Returns("IX");
+                    yield return new TestCaseData("XCIII", "VIII").Returns("CI");
+                    yield return new TestCaseData("L", "L").Returns("C");
+                    yield return new TestCaseData("MMM", "M").Returns("MMMM");
+                    yield return new TestCaseData("C", "CM").Returns("M");
+                    yield return new TestCaseData("CLXIX", "MMCMXLIX").Returns("MMMCXVIII");
+                    yield return new TestCaseData("IIII", "XII").Returns("XVI");
+                }
+            }
         }
     }
 }
