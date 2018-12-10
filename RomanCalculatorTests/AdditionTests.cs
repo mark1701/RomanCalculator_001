@@ -2,7 +2,7 @@
 
 namespace RomanCalculator.Tests
 {
-    class ProgramTests
+    class AdditionTests
     {
         [Test]
         public void Adding_two_empty_numbers_returns_an_empty_sum()
