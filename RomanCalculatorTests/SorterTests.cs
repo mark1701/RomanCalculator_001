@@ -1,6 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 
 namespace RomanCalculator.Tests
 {
@@ -8,11 +6,11 @@ namespace RomanCalculator.Tests
     internal class SorterTests
     {
         [Test]
-        public void Stub() {
+        public void Sorting_by_numeral_weights_a_positivised_number() {
             //output: a string containing all occuring numerals sorted by weight
             //a roman number in positive notation
             var input = "VIIIILXXXXI";
-            var expected = "LXXXXVIIIII";
+            var expectedSortedNumber = "LXXXXVIIIII";
 
             var sortedByWeightNumerals = new char[] { 'M', 'D', 'C', 'L', 'X', 'V', 'I' };
             var result = "";
@@ -26,8 +24,7 @@ namespace RomanCalculator.Tests
                 }
             }
 
-            var output = result;
-            Assert.AreEqual(expected, output);
+            Assert.AreEqual(expectedSortedNumber, result);
         }
     }
 }
