@@ -34,6 +34,16 @@ namespace RomanCalculator.Tests
             Assert.AreEqual(nonEmptyNumber, result);
         }
 
+        [Test]
+        public void Adding_two_random_numbers()
+        {
+            var firstNumber = "IIII";
+            var secondNumber = "XII";
+            var expectedResult = "XVI";
 
+            var result = Addition.Sum(firstNumber, secondNumber);
+
+            Assert.AreEqual(expectedResult, result);
+        }
     }
 }
