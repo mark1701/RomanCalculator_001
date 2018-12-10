@@ -7,20 +7,8 @@ namespace RomanCalculator.Tests
     internal class SorterTests
     {
         [Test, TestCaseSource(typeof(SorterTestData), nameof(SorterTestData.UnsortedCases))]
-        public string Sorting_by_weights_a_positivised_number(string numberToSort) {
-            var sortedByWeightNumerals = new char[] { 'M', 'D', 'C', 'L', 'X', 'V', 'I' };
-            var sortedNumber = "";
-
-            foreach (var numeral in sortedByWeightNumerals)
-            {
-                foreach (char element in numberToSort) {
-                    if (element == numeral) {
-                        sortedNumber += numeral;
-                    }
-                }
-            }
-
-            return sortedNumber;
+        public string Sorting_by_weights_a_number(string numberToSort) {
+            return Sorter.SortByWeight(numberToSort);
         }
 
         private class SorterTestData
