@@ -1,10 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace RomanCalculator
 {
     public static class Converter
     {
+        private static readonly Tuple<string, string>[] NumbersComposition = new Tuple<string, string>[] {
+            Tuple.Create("IIIII","V"),
+            Tuple.Create("VV","X"),
+            Tuple.Create("XXXXX","L"),
+            Tuple.Create("LL","C"),
+            Tuple.Create("CCCCC","D"),
+            Tuple.Create("DD","M")
+        };
+
         private static readonly Dictionary<string, string> SubtractiveNumbersReplacements = new Dictionary<string, string> {
             {"IV","IIII"},
             {"IX","VIIII"},
@@ -34,6 +44,12 @@ namespace RomanCalculator
 
         public static string NormaliseNumber(string number) {
             var normalisededNumber = number;
+
+            //first check if there are numbers we can already assemble
+            foreach (var compoundForm in NumbersComposition) {
+                normalisededNumber = normalisededNumber.Replace(compoundForm.Item1, compoundForm.Item2);
+            }
+
             var sortedPositivisedForms = PositivisedNumbersNormalisedForms.Keys.OrderByDescending(key => key.Length);
 
             foreach (var positivisedNumber in sortedPositivisedForms)

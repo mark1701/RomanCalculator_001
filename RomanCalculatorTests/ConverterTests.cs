@@ -59,6 +59,7 @@ namespace RomanCalculator.Tests
                     yield return new TestCaseData("LXXXXIIII").Returns("XCIV");
                     yield return new TestCaseData("MCLXXIIII").Returns("MCLXXIV");
                     yield return new TestCaseData("CXXXVIIII").Returns("CXXXIX");
+                    yield return new TestCaseData("VIIIII").Returns("X");
                 }
             }
         }
