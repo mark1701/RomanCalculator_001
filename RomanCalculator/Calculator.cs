@@ -6,7 +6,7 @@ namespace RomanCalculator
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("======= QCL Rocks! =======");
+            Console.WriteLine("======= QCL Roman Calculator =======");
 
             while (true) {
                 //Ask user first number
@@ -38,7 +38,6 @@ namespace RomanCalculator
                     Console.WriteLine("Invalid code: all your base are belong to us!");
                 }
             }
-
         }
     }
 }
