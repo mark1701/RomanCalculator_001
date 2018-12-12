@@ -1,18 +1,20 @@
-﻿namespace RomanCalculator
+﻿using RomanCalculator.Model;
+
+namespace RomanCalculator
 {
     public static class Sorter
     {
         public static string SortByWeight(string numberToSort) {
-            var sortedByWeightNumerals = new char[] { 'M', 'D', 'C', 'L', 'X', 'V', 'I' };
+            var sortedByDescendingWeightNumerals = Numerals.GetNumeralsByDescendingWeight();
             var sortedNumber = "";
 
-            foreach (var numeral in sortedByWeightNumerals)
+            foreach (var numeral in sortedByDescendingWeightNumerals)
             {
                 foreach (char element in numberToSort)
                 {
-                    if (element == numeral)
+                    if (Numerals.GetNumeral(element) == numeral)
                     {
-                        sortedNumber += numeral;
+                        sortedNumber += numeral.Name;
                     }
                 }
             }
