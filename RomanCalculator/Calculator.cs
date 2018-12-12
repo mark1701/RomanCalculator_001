@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RomanCalculator
 {
     class Calculator
     {
+        [ExcludeFromCodeCoverage]
         static void Main(string[] args)
         {
             Console.WriteLine("======= QCL Roman Calculator =======");
