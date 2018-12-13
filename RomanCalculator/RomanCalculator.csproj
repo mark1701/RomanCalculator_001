@@ -45,7 +45,8 @@
   <ItemGroup>
     <Compile Include="Addition.cs" />
     <Compile Include="Calculator.cs" />
-    <Compile Include="Model\Numerals.cs" />
+    <Compile Include="Model\RomanNumber.cs" />
+    <Compile Include="Model\RomanNumerals.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Converter.cs" />
     <Compile Include="Sorter.cs" />

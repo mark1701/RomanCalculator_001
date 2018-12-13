@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RomanCalculator.Model
 {
-    internal static class Numerals
+    internal static class RomanNumerals
     {
         internal class I { }
         internal class V { }

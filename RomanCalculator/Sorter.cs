@@ -4,15 +4,16 @@ namespace RomanCalculator
 {
     public static class Sorter
     {
-        public static string SortByWeight(string numberToSort) {
-            var sortedByDescendingWeightNumerals = Numerals.GetNumeralsByDescendingWeight();
+        public static string SortByWeight(RomanNumber numberToSort) {
+            var sortedByDescendingWeightNumerals = RomanNumerals.GetNumeralsByDescendingWeight();
+
             var sortedNumber = "";
 
             foreach (var numeral in sortedByDescendingWeightNumerals)
             {
-                foreach (char element in numberToSort)
+                foreach (var element in numberToSort.ComposingNumerals)
                 {
-                    if (Numerals.GetNumeral(element) == numeral)
+                    if (element == numeral)
                     {
                         sortedNumber += numeral.Name;
                     }
